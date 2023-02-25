@@ -11,9 +11,11 @@
 		455A8E78299BBCD400F06136 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A8E77299BBCD400F06136 /* ViewController.swift */; };
 		455A8E7A299BBCD500F06136 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 455A8E79299BBCD500F06136 /* Assets.xcassets */; };
 		455A8E7D299BBCD500F06136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 455A8E7B299BBCD500F06136 /* Main.storyboard */; };
-		455A8E88299BBCD500F06136 /* NetworkingModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A8E87299BBCD500F06136 /* NetworkingModuleTests.swift */; };
 		455A8E92299BBCD500F06136 /* NetworkingModuleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A8E91299BBCD500F06136 /* NetworkingModuleUITests.swift */; };
 		455A8E94299BBCD500F06136 /* NetworkingModuleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A8E93299BBCD500F06136 /* NetworkingModuleUITestsLaunchTests.swift */; };
+		45C77BFE29AA1FC50069F6D1 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C77BFD29AA1FC50069F6D1 /* FeedLoader.swift */; };
+		45C77C0029AA1FD60069F6D1 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C77BFF29AA1FD60069F6D1 /* FeedItem.swift */; };
+		45C77C0229AA22B90069F6D1 /* RemoteFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C77C0129AA22B90069F6D1 /* RemoteFeedLoaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,10 +43,12 @@
 		455A8E7C299BBCD500F06136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		455A8E7E299BBCD500F06136 /* NetworkingModule.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NetworkingModule.entitlements; sourceTree = "<group>"; };
 		455A8E83299BBCD500F06136 /* NetworkingModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		455A8E87299BBCD500F06136 /* NetworkingModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingModuleTests.swift; sourceTree = "<group>"; };
 		455A8E8D299BBCD500F06136 /* NetworkingModuleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingModuleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		455A8E91299BBCD500F06136 /* NetworkingModuleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingModuleUITests.swift; sourceTree = "<group>"; };
 		455A8E93299BBCD500F06136 /* NetworkingModuleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingModuleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		45C77BFD29AA1FC50069F6D1 /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
+		45C77BFF29AA1FD60069F6D1 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
+		45C77C0129AA22B90069F6D1 /* RemoteFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +99,10 @@
 		455A8E74299BBCD400F06136 /* NetworkingModule */ = {
 			isa = PBXGroup;
 			children = (
-				455A8E75299BBCD400F06136 /* AppDelegate.swift */,
-				455A8E77299BBCD400F06136 /* ViewController.swift */,
-				455A8E79299BBCD500F06136 /* Assets.xcassets */,
-				455A8E7B299BBCD500F06136 /* Main.storyboard */,
 				455A8E7E299BBCD500F06136 /* NetworkingModule.entitlements */,
+				45C77BFC29AA1F930069F6D1 /* Supporting files */,
+				45C77BFB29AA1F860069F6D1 /* Feed Feature */,
+				455A8E77299BBCD400F06136 /* ViewController.swift */,
 			);
 			path = NetworkingModule;
 			sourceTree = "<group>";
@@ -107,7 +110,7 @@
 		455A8E86299BBCD500F06136 /* NetworkingModuleTests */ = {
 			isa = PBXGroup;
 			children = (
-				455A8E87299BBCD500F06136 /* NetworkingModuleTests.swift */,
+				45C77C0129AA22B90069F6D1 /* RemoteFeedLoaderTests.swift */,
 			);
 			path = NetworkingModuleTests;
 			sourceTree = "<group>";
@@ -119,6 +122,25 @@
 				455A8E93299BBCD500F06136 /* NetworkingModuleUITestsLaunchTests.swift */,
 			);
 			path = NetworkingModuleUITests;
+			sourceTree = "<group>";
+		};
+		45C77BFB29AA1F860069F6D1 /* Feed Feature */ = {
+			isa = PBXGroup;
+			children = (
+				45C77BFD29AA1FC50069F6D1 /* FeedLoader.swift */,
+				45C77BFF29AA1FD60069F6D1 /* FeedItem.swift */,
+			);
+			path = "Feed Feature";
+			sourceTree = "<group>";
+		};
+		45C77BFC29AA1F930069F6D1 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				455A8E75299BBCD400F06136 /* AppDelegate.swift */,
+				455A8E79299BBCD500F06136 /* Assets.xcassets */,
+				455A8E7B299BBCD500F06136 /* Main.storyboard */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45C77C0029AA1FD60069F6D1 /* FeedItem.swift in Sources */,
+				45C77BFE29AA1FC50069F6D1 /* FeedLoader.swift in Sources */,
 				455A8E78299BBCD400F06136 /* ViewController.swift in Sources */,
 				455A8E76299BBCD400F06136 /* AppDelegate.swift in Sources */,
 			);
@@ -260,7 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				455A8E88299BBCD500F06136 /* NetworkingModuleTests.swift in Sources */,
+				45C77C0229AA22B90069F6D1 /* RemoteFeedLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
