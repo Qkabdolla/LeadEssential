@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct FeedItem {
+struct FeedItem: Equatable {
     let id: UUID
     let description: String?
     let location: String?
-    let imageUrl: URL
+    let imageURL: URL
 }
