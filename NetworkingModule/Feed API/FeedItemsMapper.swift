@@ -32,7 +32,7 @@ final class FeedItemsMapper {
         guard response.statusCode == 200,
               let root = try? JSONDecoder().decode(Root.self, from: data)
         else {
-            return .falture(.invalidData)
+            return .failure(RemoteFeedLoader.Error.invalidData)
         }
         
         let items = root.items.map { $0.item }
