@@ -60,6 +60,17 @@
                ReferencedContainer = "container:NetworkingModule.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "45F4852B29D8639300F62439"
+               BuildableName = "NetworkingModuleCacheIntegrationTests.xctest"
+               BlueprintName = "NetworkingModuleCacheIntegrationTests"
+               ReferencedContainer = "container:NetworkingModule.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

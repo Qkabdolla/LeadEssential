@@ -44,28 +44,6 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "455A8E82299BBCD500F06136"
-               BuildableName = "NetworkingModuleTests.xctest"
-               BlueprintName = "NetworkingModuleTests"
-               ReferencedContainer = "container:NetworkingModule.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            testExecutionOrdering = "random">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4570B7BA29AF137200DB9EC7"
-               BuildableName = "NetworkingModuleAPIEndToEndTests.xctest"
-               BlueprintName = "NetworkingModuleAPIEndToEndTests"
-               ReferencedContainer = "container:NetworkingModule.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            testExecutionOrdering = "random">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "45F4852B29D8639300F62439"
                BuildableName = "NetworkingModuleCacheIntegrationTests.xctest"
                BlueprintName = "NetworkingModuleCacheIntegrationTests"
