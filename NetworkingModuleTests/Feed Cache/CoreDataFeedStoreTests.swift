@@ -13,13 +13,13 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     func test_retrieve_deliversEmptyOnEmptyCache() {
         let sut = makeSUT()
         
-        expect(sut, toRetrieve: .empty)
+        expect(sut, toRetrieve: .success(nil))
     }
     
     func test_retrieve_hasNoSideEffectsOnEmptyCache() {
         let sut = makeSUT()
         
-        expect(sut, toRetrieveTwice: .empty)
+        expect(sut, toRetrieveTwice: .success(nil))
     }
     
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
@@ -29,7 +29,7 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         
         insert((feed, timestamp), to: sut)
         
-        expect(sut, toRetrieve: .found(feed: feed, timestamp: timestamp))
+        expect(sut, toRetrieve: .success(CachedFeed(feed: feed, timestamp: timestamp)))
     }
     
     func test_retrieve_hasNoSideEffectsOnNonEmptyCache() {
@@ -39,7 +39,7 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         
         insert((feed, timestamp), to: sut)
         
-        expect(sut, toRetrieveTwice: .found(feed: feed, timestamp: timestamp))
+        expect(sut, toRetrieveTwice: .success(CachedFeed(feed: feed, timestamp: timestamp)))
     }
     
     func test_insert_overridesPreviouslyInsertedCacheValues() {
@@ -51,7 +51,7 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         let latestItems = (uniqueItems().local, Date())
         insert(latestItems, to: sut)
         
-        expect(sut, toRetrieve: .found(feed: latestItems.0, timestamp: latestItems.1))
+        expect(sut, toRetrieve: .success(CachedFeed(feed: latestItems.0, timestamp: latestItems.1)))
     }
     
     func test_delete_hasNoSideEffectsOnEmptyCache() {
@@ -60,7 +60,7 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         let deletionError = deleteCache(from: sut)
         
         XCTAssertNil(deletionError, "Expected empty cache deletion to succeed")
-        expect(sut, toRetrieve: .empty)
+        expect(sut, toRetrieve: .success(nil))
     }
     
     func test_delete_emptiesPreviouslyInsertedCache() {
@@ -70,7 +70,7 @@ final class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
         let deletionError = deleteCache(from: sut)
         
         XCTAssertNil(deletionError, "Expected non-empty cache deletion to succeed")
-        expect(sut, toRetrieve: .empty)
+        expect(sut, toRetrieve: .success(nil))
     }
     
     func test_storeSideEffects_runSerially() {
