@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import NetworkingModule
+@testable import EssentialFeed
 
 final class NetworkingModuleAPIEndToEndTests: XCTestCase {
     func test_endToEndTestServerGETFeedResult_matchesFixedTestAccountData() {

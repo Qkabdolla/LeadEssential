@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "455A8E71299BBCD400F06136"
-               BuildableName = "NetworkingModule.app"
-               BlueprintName = "NetworkingModule"
+               BlueprintIdentifier = "4505408929F10389002A9DBD"
+               BuildableName = "EssentialFeed.framework"
+               BlueprintName = "EssentialFeed"
                ReferencedContainer = "container:NetworkingModule.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "455A8E71299BBCD400F06136"
-            BuildableName = "NetworkingModule.app"
-            BlueprintName = "NetworkingModule"
+            BlueprintIdentifier = "4505408929F10389002A9DBD"
+            BuildableName = "EssentialFeed.framework"
+            BlueprintName = "EssentialFeed"
             ReferencedContainer = "container:NetworkingModule.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
@@ -62,16 +62,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "455A8E71299BBCD400F06136"
-            BuildableName = "NetworkingModule.app"
-            BlueprintName = "NetworkingModule"
-            ReferencedContainer = "container:NetworkingModule.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -79,16 +69,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "455A8E71299BBCD400F06136"
-            BuildableName = "NetworkingModule.app"
-            BlueprintName = "NetworkingModule"
+            BlueprintIdentifier = "4505408929F10389002A9DBD"
+            BuildableName = "EssentialFeed.framework"
+            BlueprintName = "EssentialFeed"
             ReferencedContainer = "container:NetworkingModule.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

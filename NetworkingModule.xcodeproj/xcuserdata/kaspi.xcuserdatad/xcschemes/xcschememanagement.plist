@@ -11,12 +11,15 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>NetworkingModule.xcscheme_^#shared#^_</key>
+		<key>EssentialFeed.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<true/>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>5</integer>
+		</dict>
+		<key>NetworkingModuleAPIEndToEndTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>NetworkingModuleCacheIntegration.xcscheme_^#shared#^_</key>
 		<dict>
@@ -26,6 +29,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>4505408929F10389002A9DBD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>455A8E71299BBCD400F06136</key>
 		<dict>
 			<key>primary</key>
@@ -37,6 +45,16 @@
 			<true/>
 		</dict>
 		<key>455A8E8C299BBCD500F06136</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4570B7BA29AF137200DB9EC7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>45F4852B29D8639300F62439</key>
 		<dict>
 			<key>primary</key>
 			<true/>

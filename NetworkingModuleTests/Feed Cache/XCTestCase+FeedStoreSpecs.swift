@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import NetworkingModule
+@testable import EssentialFeed
 
 extension FeedStoreSpecs where Self: XCTestCase {
     func deleteCache(from sut: FeedStore) -> Error? {
