@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4505408929F10389002A9DBD"
-               BuildableName = "EssentialFeed.framework"
-               BlueprintName = "EssentialFeed"
+               BlueprintIdentifier = "45E2DC4E29F1297A008C1EB9"
+               BuildableName = "EssentialFeediOS.framework"
+               BlueprintName = "EssentialFeediOS"
                ReferencedContainer = "container:NetworkingModule.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4505408929F10389002A9DBD"
-            BuildableName = "EssentialFeed.framework"
-            BlueprintName = "EssentialFeed"
+            BlueprintIdentifier = "45E2DC4E29F1297A008C1EB9"
+            BuildableName = "EssentialFeediOS.framework"
+            BlueprintName = "EssentialFeediOS"
             ReferencedContainer = "container:NetworkingModule.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
@@ -44,9 +44,9 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "455A8E82299BBCD500F06136"
-               BuildableName = "NetworkingModuleTests.xctest"
-               BlueprintName = "NetworkingModuleTests"
+               BlueprintIdentifier = "45E2DC5529F1297B008C1EB9"
+               BuildableName = "EssentialFeediOSTests.xctest"
+               BlueprintName = "EssentialFeediOSTests"
                ReferencedContainer = "container:NetworkingModule.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -72,9 +72,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4505408929F10389002A9DBD"
-            BuildableName = "EssentialFeed.framework"
-            BlueprintName = "EssentialFeed"
+            BlueprintIdentifier = "45E2DC4E29F1297A008C1EB9"
+            BuildableName = "EssentialFeediOS.framework"
+            BlueprintName = "EssentialFeediOS"
             ReferencedContainer = "container:NetworkingModule.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
