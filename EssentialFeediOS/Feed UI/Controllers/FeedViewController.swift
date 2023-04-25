@@ -18,6 +18,10 @@ final class FeedViewController: UITableViewController, UITableViewDataSourcePref
         self.refreshController = refreshController
     }
     
+    deinit {
+        print("FeedViewController")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
