@@ -25,6 +25,7 @@ final class FeedViewController: UITableViewController, UITableViewDataSourcePref
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(FeedImageCell.self, forCellReuseIdentifier: "FeedImageCell")
         refreshControl = refreshController?.view
         tableView.prefetchDataSource = self
         refreshController?.refresh()
@@ -36,7 +37,7 @@ final class FeedViewController: UITableViewController, UITableViewDataSourcePref
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellController = cellController(forRowAt: indexPath)
-        return cellController.view()
+        return cellController.view(in: tableView)
     }
     
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
