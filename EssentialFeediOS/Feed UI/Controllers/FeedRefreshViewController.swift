@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import EssentialFeed
 
 protocol FeedRefreshViewControllerDelegate {
     func didRequestFeedRefresh()
 }
 
-final class FeedRefreshViewController: NSObject, FeedLoadingView {
+final class FeedRefreshViewController: NSObject, FeedLoadingView, FeedErrorView {
     private(set) lazy var view = loadView()
-
+    private(set) var errorView = ErrorView()
+    
     private let delegate: FeedRefreshViewControllerDelegate
 
     init(delegate: FeedRefreshViewControllerDelegate) {
@@ -30,6 +32,10 @@ final class FeedRefreshViewController: NSObject, FeedLoadingView {
         } else {
             view.endRefreshing()
         }
+    }
+    
+    func display(_ viewModel: FeedErrorViewModel) {
+        errorView.message = viewModel.message
     }
     
     private func loadView() -> UIRefreshControl {

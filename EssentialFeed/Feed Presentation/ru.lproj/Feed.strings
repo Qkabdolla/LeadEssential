@@ -1,0 +1,10 @@
+/* 
+  Feed.strings
+  NetworkingModule
+
+  Created by Каспи on 30.04.2023.
+  
+*/
+
+"FEED_VIEW_TITLE" = "Мой Фид";
+"FEED_VIEW_CONNECTION_ERROR" = "Не удалось подключиться к серверу";
