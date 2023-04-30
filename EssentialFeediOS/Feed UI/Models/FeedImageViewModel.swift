@@ -2,7 +2,7 @@
 //  FeedImageViewModel.swift
 //  EssentialFeediOS
 //
-//  Created by Каспи on 24.04.2023.
+//  Created by Каспи on 30.04.2023.
 //
 
 import Foundation
