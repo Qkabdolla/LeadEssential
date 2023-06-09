@@ -7,59 +7,44 @@
 
 import CoreData
 
-final class CoreDataFeedStore: FeedStore {
+public final class CoreDataFeedStore {
+    private static let modelName = "NetworkingModule"
+    private static let model = NSManagedObjectModel.with(name: modelName, in: Bundle(for: CoreDataFeedStore.self))
     
     private let container: NSPersistentContainer
     private let context: NSManagedObjectContext
-    
-    init(storeURL: URL, bundle: Bundle = .main) throws {
-        container = try NSPersistentContainer.load(moduleName: "NetworkingModule", url: storeURL, in: bundle)
-        context = container.newBackgroundContext()
+
+    enum StoreError: Error {
+        case modelNotFound
+        case failedToLoadPersistentContainer(Error)
     }
-    
-    func deleteCachedFeed(completion: @escaping DeletionCompletion) {
-        perform { context in
-            let result = Result {
-                try ManagedCache.find(in: context).map(context.delete).map(context.save)
-                return ()
-            }
-            completion(result)
-        }
-    }
-    
-    func insert(_ items: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
-        perform { context in
-            let result = Result {
-                let managedCache = try ManagedCache.newUniqueInstance(in: context)
-                managedCache.timestamp = timestamp
-                managedCache.feed = ManagedFeedImage.images(from: items, in: context)
-                
-                try context.save()
-                
-                return ()
-            }
-            completion(result)
+
+    public init(storeURL: URL) throws {
+        guard let model = CoreDataFeedStore.model else {
+            throw StoreError.modelNotFound
         }
         
+        do {
+            container = try NSPersistentContainer.load(name: CoreDataFeedStore.modelName, model: model, url: storeURL)
+            context = container.newBackgroundContext()
+        } catch {
+            throw StoreError.failedToLoadPersistentContainer(error)
+        }
+    }
+
+    func perform(_ action: @escaping (NSManagedObjectContext) -> Void) {
+        let context = self.context
+        context.perform { action(context) }
     }
     
-    func retrieve(completion: @escaping RetrieveCompletion) {
-        perform { context in
-            let result = Result {
-                try ManagedCache.find(in: context).map {
-                    return CachedFeed(
-                        feed: $0.localFeed,
-                        timestamp: $0.timestamp
-                    )
-                }
-            }
-            
-            completion(result)
+    private func cleanUpReferencesToPersistentStores() {
+        context.performAndWait {
+            let coordinator = self.container.persistentStoreCoordinator
+            try? coordinator.persistentStores.forEach(coordinator.remove)
         }
     }
     
-    private func perform(_ action: @escaping (NSManagedObjectContext) -> Void) {
-        let context = self.context
-        context.perform { action(context) }
+    deinit {
+        cleanUpReferencesToPersistentStores()
     }
 }
