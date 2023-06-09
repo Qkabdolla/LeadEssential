@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     var refreshController: FeedRefreshViewController?
     
     var tableModel = [FeedImageCellController]() {
@@ -23,7 +23,7 @@ final class FeedViewController: UITableViewController, UITableViewDataSourcePref
         print("FeedViewController")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(FeedImageCell.self, forCellReuseIdentifier: "FeedImageCell")
@@ -32,16 +32,16 @@ final class FeedViewController: UITableViewController, UITableViewDataSourcePref
         refreshController?.refresh()
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableModel.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellController = cellController(forRowAt: indexPath)
         return cellController.view(in: tableView)
     }
     
-    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cancelCellControllerLoad(forRowAt: indexPath)
     }
     
