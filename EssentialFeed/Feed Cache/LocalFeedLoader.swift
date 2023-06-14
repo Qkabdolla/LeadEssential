@@ -17,8 +17,8 @@ class LocalFeedLoader {
     }
 }
 
-extension LocalFeedLoader {
-    typealias SaveResult = Result<Void, Error>
+extension LocalFeedLoader: FeedCache {
+    typealias SaveResult = FeedCache.Result
     
     func save(_ items: [FeedItem], completion: @escaping (SaveResult) -> Void) {
         store.deleteCachedFeed { [weak self] deletionResult in
