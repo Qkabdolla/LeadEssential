@@ -10,11 +10,11 @@ import UIKit
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     var refreshController: FeedRefreshViewController?
     
-    var tableModel = [FeedImageCellController]() {
+    private var tableModel = [FeedImageCellController]() {
         didSet { tableView.reloadData() }
     }
     
-    convenience init(refreshController: FeedRefreshViewController) {
+    public convenience init(refreshController: FeedRefreshViewController) {
         self.init()
         self.refreshController = refreshController
     }
@@ -30,6 +30,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         refreshControl = refreshController?.view
         tableView.prefetchDataSource = self
         refreshController?.refresh()
+    }
+    
+    public func display(_ cellControllers: [FeedImageCellController]) {
+        tableModel = cellControllers
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

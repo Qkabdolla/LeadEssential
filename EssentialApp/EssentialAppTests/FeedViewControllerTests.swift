@@ -9,6 +9,7 @@ import XCTest
 import UIKit
 @testable import EssentialFeed
 @testable import EssentialFeediOS
+@testable import EssentialApp
 
 final class FeedViewControllerTests: XCTestCase {
     
@@ -409,7 +410,7 @@ final class FeedViewControllerTests: XCTestCase {
     }
 }
 
-private extension FeedViewController {
+extension FeedViewController {
     func simulateUserInitiatedFeedReload() {
         refreshControl?.simulatePullToRefresh()
     }
@@ -453,6 +454,9 @@ private extension FeedViewController {
     }
     
     func feedImageView(at row: Int) -> UITableViewCell? {
+        guard numberOfRenderedFeedImageViews > row else {
+            return nil
+        }
         let ds = tableView.dataSource
         let index = IndexPath(row: row, section: feedImagesSection)
         return ds?.tableView(tableView, cellForRowAt: index)
@@ -464,6 +468,10 @@ private extension FeedViewController {
     
     var errorMessage: String? {
         return refreshController?.errorView.message
+    }
+    
+    func renderedFeedImageData(at index: Int) -> Data? {
+        return simulateFeedImageViewVisible(at: index)?.renderedImage
     }
 }
 
@@ -517,7 +525,7 @@ private extension UIRefreshControl {
     }
 }
 
-private extension UIImage {
+extension UIImage {
     static func make(withColor color: UIColor) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
         let format = UIGraphicsImageRendererFormat()
