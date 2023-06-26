@@ -41,6 +41,7 @@
 		4561244D2A34A3A20005DF24 /* FeedImageDataLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4561244C2A34A3A20005DF24 /* FeedImageDataLoaderWithFallbackComposite.swift */; };
 		456124502A34A3DB0005DF24 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4561244F2A34A3DB0005DF24 /* XCTestCase+MemoryLeakTracking.swift */; };
 		456124522A34A4270005DF24 /* SharedHalpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456124512A34A4270005DF24 /* SharedHalpers.swift */; };
+		BB06FA262A49DEA300746EEA /* CombineHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB06FA252A49DEA300746EEA /* CombineHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		4561244C2A34A3A20005DF24 /* FeedImageDataLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		4561244F2A34A3DB0005DF24 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		456124512A34A4270005DF24 /* SharedHalpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedHalpers.swift; sourceTree = "<group>"; };
+		BB06FA252A49DEA300746EEA /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 				4525350B2A39ACBA00DB5044 /* FeedLoaderCacheDecorator.swift */,
 				452535152A39B98100DB5044 /* FeedImageDataLoaderCacheDecorator.swift */,
 				452535172A39E2F700DB5044 /* DebuggingSceneDelegate.swift */,
+				BB06FA252A49DEA300746EEA /* CombineHelpers.swift */,
 			);
 			path = EssentialApp;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				452535212A3B438D00DB5044 /* FeedUIComposer.swift in Sources */,
 				452FCC152A33754700B2FA15 /* AppDelegate.swift in Sources */,
 				456124492A349DA30005DF24 /* FeedLoaderWithFallbackComposite.swift in Sources */,
+				BB06FA262A49DEA300746EEA /* CombineHelpers.swift in Sources */,
 				4525350C2A39ACBA00DB5044 /* FeedLoaderCacheDecorator.swift in Sources */,
 				452535182A39E2F700DB5044 /* DebuggingSceneDelegate.swift in Sources */,
 				452535222A3B438D00DB5044 /* MainQueueDispatchDecorator.swift in Sources */,
@@ -563,6 +567,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8S532B766L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EssentialApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -590,6 +595,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8S532B766L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EssentialApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -617,6 +623,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8S532B766L;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
@@ -636,6 +643,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8S532B766L;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
@@ -654,6 +662,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8S532B766L;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.EssentialAppUITests;
@@ -671,6 +680,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8S532B766L;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.EssentialAppUITests;

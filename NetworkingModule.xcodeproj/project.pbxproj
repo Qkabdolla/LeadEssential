@@ -429,7 +429,6 @@
 		45E2DC5029F1297A008C1EB9 /* EssentialFeediOS */ = {
 			isa = PBXGroup;
 			children = (
-				BBF7B80329F59B88005126F9 /* Feed Image Loader */,
 				BBF7B80229F59B7E005126F9 /* Feed UI */,
 			);
 			path = EssentialFeediOS;
@@ -484,13 +483,6 @@
 				BBF7B80429F59B98005126F9 /* Controllers */,
 			);
 			path = "Feed UI";
-			sourceTree = "<group>";
-		};
-		BBF7B80329F59B88005126F9 /* Feed Image Loader */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Feed Image Loader";
 			sourceTree = "<group>";
 		};
 		BBF7B80429F59B98005126F9 /* Controllers */ = {
@@ -1214,7 +1206,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8S532B766L;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1242,7 +1234,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8S532B766L;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
