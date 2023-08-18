@@ -70,14 +70,14 @@ final class NetworkingModuleAPIEndToEndTests: XCTestCase {
         return client
     }
     
-    private func getFeedResult(file: StaticString = #filePath, line: UInt = #line) -> FeedLoader.Result? {
+    private func getFeedResult(file: StaticString = #filePath, line: UInt = #line) -> Swift.Result<[FeedItem], Error>? {
         let testServerURL = URL(string: "https://mocki.io/v1/82e290dd-9b6e-4787-8577-57bc37445f46")!
         let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
         trackForMemoryLeaks(client, file: file, line: line)
         
         let exp = expectation(description: "Wait for load completion")
         
-        var receivedResult: FeedLoader.Result?
+        var receivedResult: Swift.Result<[FeedItem], Error>?
         client.get(from: feedTestServerURL) { result in
             receivedResult = result.flatMap { (data, response) in
                 do {
