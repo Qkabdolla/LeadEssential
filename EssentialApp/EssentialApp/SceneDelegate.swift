@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         LocalFeedLoader(store: store, currentDate: Date.init)
     }()
     
-    private lazy var remoteFeedLoader = RemoteFeedLoader(client: makeRemoteClient(), url: url)
+    private lazy var remoteFeedLoader = RemoteFeedLoader(url: url, client: makeRemoteClient())
     
     convenience init(httpClient: HTTPClient, store: FeedStore & FeedImageDataStore) {
         self.init()
@@ -140,3 +140,5 @@ private extension FeedImageDataCache {
         save(data, for: url) { _ in }
     }
 }
+
+extension RemoteLoader: FeedLoader where Resource == [FeedItem] {}
