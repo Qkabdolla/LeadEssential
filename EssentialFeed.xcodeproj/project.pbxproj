@@ -259,6 +259,7 @@
 		4505408B29F1038A002A9DBD /* EssentialFeed */ = {
 			isa = PBXGroup;
 			children = (
+				45D641352A8F91EB003E5A29 /* Image Comments API */,
 				45D641312A8F9103003E5A29 /* Shared API Infra */,
 				45D6412F2A8F90F0003E5A29 /* Shared API */,
 				45D6412C2A8F8E44003E5A29 /* Image Comments Feature */,
@@ -343,6 +344,7 @@
 		455A8E86299BBCD500F06136 /* EssentialFeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				45D641362A8F9200003E5A29 /* Image Comments API */,
 				45D641332A8F9142003E5A29 /* Shared API Infra */,
 				45D641322A8F913A003E5A29 /* Shared API */,
 				458F881929FD080B00AF90A7 /* Feed Presentaion */,
@@ -421,8 +423,6 @@
 				4523080B29BDF161004C3F1C /* RemoteFeedItem.swift */,
 				45D48B682A3366A400825D64 /* RemoteFeedImageDataLoader.swift */,
 				45D48B6A2A3366D400825D64 /* Response+StatusCode.swift */,
-				45D641262A8E5148003E5A29 /* ImageCommentsMapper.swift */,
-				45D641282A8E5160003E5A29 /* RemoteImageCommentsLoader.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -432,7 +432,6 @@
 			children = (
 				45C77C0129AA22B90069F6D1 /* LoadFeedFromRemoteUseCaseTests.swift */,
 				45D48B722A33686F00825D64 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
-				45D6412A2A8E51D0003E5A29 /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -484,6 +483,23 @@
 				45D48B6E2A33679F00825D64 /* URLProtocolStub.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		45D641352A8F91EB003E5A29 /* Image Comments API */ = {
+			isa = PBXGroup;
+			children = (
+				45D641262A8E5148003E5A29 /* ImageCommentsMapper.swift */,
+				45D641282A8E5160003E5A29 /* RemoteImageCommentsLoader.swift */,
+			);
+			path = "Image Comments API";
+			sourceTree = "<group>";
+		};
+		45D641362A8F9200003E5A29 /* Image Comments API */ = {
+			isa = PBXGroup;
+			children = (
+				45D6412A2A8E51D0003E5A29 /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
+			);
+			path = "Image Comments API";
 			sourceTree = "<group>";
 		};
 		45E2DC5029F1297A008C1EB9 /* EssentialFeediOS */ = {
