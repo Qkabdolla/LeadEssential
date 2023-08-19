@@ -40,11 +40,11 @@ class FeedAcceptanceTests: XCTestCase {
     }
     
     func test_onEnteringBackground_deletesExpiredFeedCache() {
-        let store = InMemoryFeedStore.withExpiredFeedCache
+        let _ = InMemoryFeedStore.withExpiredFeedCache
     }
     
     func test_onEnteringBackground_keepsNonExpiredFeedCache() {
-        let store = InMemoryFeedStore.withExpiredFeedCache
+        let _ = InMemoryFeedStore.withExpiredFeedCache
         
     }
     
