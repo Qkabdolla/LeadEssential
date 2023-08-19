@@ -45,25 +45,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func configureWindow() {
-        // MARK: - OLD verstion with Composite and Decorator
-
-//        let feedViewController = FeedUIComposer.feedComposedWith(
-//            feedLoader: FeedLoaderWithFallbackComposite(
-//                primary: FeedLoaderCacheDecorator(
-//                    decoratee: remoteFeedLoader,
-//                    cache: localFeedLoader
-//                ),
-//                fallback: localFeedLoader
-//            ),
-//            imageLoader: FeedImageDataLoaderWithFallbackComposite(
-//                primary: localImageLoader,
-//                fallback: FeedImageDataLoaderCacheDecorator(
-//                    decoratee: remoteImageLoader,
-//                    cache: localImageLoader
-//                )
-//            )
-//        )
-        
         let feedViewController = FeedUIComposer.feedComposedWith(
             feedLoader: makeRemoteFeedLoaderWithLocalFallback,
             imageLoader: makeLocalImageLoaderWithRemoteFallback
