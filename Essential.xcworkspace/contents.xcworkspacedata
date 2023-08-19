@@ -13,4 +13,7 @@
    <FileRef
       location = "group:EssentialFeed/CI_macOS.xctestplan">
    </FileRef>
+   <FileRef
+      location = "group:EssentialFeediOS/CI_iOS.xctestplan">
+   </FileRef>
 </Workspace>
