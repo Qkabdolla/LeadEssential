@@ -31,7 +31,10 @@ public final class ErrorView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        
+        label.text = nil
+        alpha = 0
     }
     
     private var isVisible: Bool {

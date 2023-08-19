@@ -1,0 +1,9 @@
+/* 
+  Shared.strings
+  EssentialFeed
+
+  Created by Каспи on 19.08.2023.
+  
+*/
+
+"GENERIC_CONNECTION_ERROR" = "Не удалось подключиться к серверу";

@@ -10,100 +10,12 @@ import XCTest
 
 final class FeedImagePresenterTests: XCTestCase {
     
-    func test_init_doesNotSendAnyMessages() {
-        let (_, view) = makeSUT()
-
-        XCTAssertTrue(view.messages.isEmpty, "Expected no view messages")
-    }
-    
-    func test_didStartLoadingImageData_displaysLoadingImage() {
-        let (sut, view) = makeSUT()
+    func test_map_createsViewModel() {
         let image = uniqueItem()
         
-        sut.didStartLoadingImageData(for: image)
+        let viewModel = FeedImagePresenter.map(image)
         
-        let message = view.messages.first
-        XCTAssertEqual(view.messages.count, 1)
-        XCTAssertEqual(message?.description, image.description)
-        XCTAssertEqual(message?.location, image.location)
-        XCTAssertEqual(message?.isLoading, true)
-        XCTAssertEqual(message?.shouldRetry, false)
-        XCTAssertNil(message?.image)
-    }
-    
-    func test_didFinishLoadingImageData_displaysImageWithRetryButtonAndImageNil() {
-        let (sut, view) = makeSUT()
-        let image = uniqueItem()
-        
-        sut.didFinishLoadingImageData(with: anyNSError(), for: image)
-        
-        let message = view.messages.first
-        XCTAssertEqual(view.messages.count, 1)
-        XCTAssertEqual(message?.description, image.description)
-        XCTAssertEqual(message?.location, image.location)
-        XCTAssertEqual(message?.isLoading, false)
-        XCTAssertEqual(message?.shouldRetry, true)
-        XCTAssertNil(message?.image)
-    }
-    
-    func test_didFinishLoadingImageData_displaysRetryOnFailedImageTransformation() {
-        let (sut, view) = makeSUT(imageTransformer: fail)
-        let image = uniqueItem()
-        let data = Data()
-        
-        sut.didFinishLoadingImageData(with: data, for: image)
-        
-        let message = view.messages.first
-        XCTAssertEqual(view.messages.count, 1)
-        XCTAssertEqual(message?.description, image.description)
-        XCTAssertEqual(message?.location, image.location)
-        XCTAssertEqual(message?.isLoading, false)
-        XCTAssertEqual(message?.shouldRetry, true)
-        XCTAssertNil(message?.image)
-    }
-    
-    func test_didFinishLoadingImageData_displaysImageOnSuccessfulTransformation() {
-        let image = uniqueItem()
-        let data = Data()
-        let transformedData = AnyImage()
-        let (sut, view) = makeSUT(imageTransformer: { _ in transformedData })
-
-        sut.didFinishLoadingImageData(with: data, for: image)
-        
-        let message = view.messages.first
-        XCTAssertEqual(view.messages.count, 1)
-        XCTAssertEqual(message?.description, image.description)
-        XCTAssertEqual(message?.location, image.location)
-        XCTAssertEqual(message?.isLoading, false)
-        XCTAssertEqual(message?.shouldRetry, false)
-        XCTAssertEqual(message?.image, transformedData)
-    }
-    
-    // MARK: - Helpers
-    
-    private func makeSUT(
-        imageTransformer: @escaping (Data) -> AnyImage? = { _ in nil },
-        file: StaticString = #filePath,
-        line: UInt = #line
-    ) -> (sut: FeedImagePresenter<ViewSpy, AnyImage>, view: ViewSpy) {
-        let view = ViewSpy()
-        let sut = FeedImagePresenter(view: view, imageTransformer: imageTransformer)
-        trackForMemoryLeaks(sut, file: file, line: line)
-        trackForMemoryLeaks(view, file: file, line: line)
-        return (sut, view)
-    }
-    
-    private var fail: (Data) -> AnyImage? {
-        return { _ in nil }
-    }
-    
-    private struct AnyImage: Equatable {}
-    
-    private class ViewSpy: FeedImageView {
-        private(set) var messages: [FeedImageViewModel<AnyImage>] = []
-        
-        func display(_ model: FeedImageViewModel<AnyImage>) {
-            messages.append(model)
-        }
+        XCTAssertEqual(viewModel.description, image.description)
+        XCTAssertEqual(viewModel.location, image.location)
     }
 }

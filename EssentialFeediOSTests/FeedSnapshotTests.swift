@@ -6,14 +6,14 @@
 //
 
 import XCTest
-@testable import EssentialFeediOS
+import EssentialFeediOS
 @testable import EssentialFeed
 
 class FeedSnapshotTests: XCTestCase {
-
+    
     func test_emptyFeed() {
         let sut = makeSUT()
-
+        
         sut.display(emptyFeed())
 
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "EMPTY_FEED_light")
@@ -22,22 +22,22 @@ class FeedSnapshotTests: XCTestCase {
     
     func test_feedWithContent() {
         let sut = makeSUT()
-
+        
         sut.display(feedWithContent())
 
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_CONTENT_light")
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_CONTENT_dark")
     }
     
-// TODO: - Add ErrorView to FeedViewController
-//    func test_feedWithErrorMessage() {
-//        let sut = makeSUT()
-//
-//        sut.display(.error(message: "This is a\nmulti-line\nerror message"))
-//
-//        record(snapshot: sut.snapshot(), named: "FEED_WITH_ERROR_MESSAGE")
-//    }
+    func test_feedWithErrorMessage() {
+        let sut = makeSUT()
 
+        sut.display(.error(message: "This is a\nmulti-line\nerror message"))
+
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_ERROR_MESSAGE_light")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_ERROR_MESSAGE_dark")
+    }
+    
     func test_feedWithFailedImageLoading() {
         let sut = makeSUT()
 
@@ -48,17 +48,17 @@ class FeedSnapshotTests: XCTestCase {
     }
     
     // MARK: - Helpers
+
     private func makeSUT() -> FeedViewController {
-        let controller = FeedViewController()
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = controller
-        window.isHidden = false
+        let bundle = Bundle(for: FeedViewController.self)
+        let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
+        let controller = storyboard.instantiateInitialViewController() as! FeedViewController
         controller.loadViewIfNeeded()
         controller.tableView.showsVerticalScrollIndicator = false
         controller.tableView.showsHorizontalScrollIndicator = false
         return controller
     }
-
+    
     private func emptyFeed() -> [FeedImageCellController] {
         return []
     }
@@ -77,7 +77,7 @@ class FeedSnapshotTests: XCTestCase {
             )
         ]
     }
-
+    
     private func feedWithFailedImageLoading() -> [ImageStub] {
         return [
             ImageStub(
@@ -92,45 +92,43 @@ class FeedSnapshotTests: XCTestCase {
             )
         ]
     }
+    
 }
 
 private extension FeedViewController {
     func display(_ stubs: [ImageStub]) {
         let cells: [FeedImageCellController] = stubs.map { stub in
-            let cellController = FeedImageCellController(delegate: stub)
+            let cellController = FeedImageCellController(viewModel: stub.viewModel, delegate: stub)
             stub.controller = cellController
             return cellController
         }
-
+        
         display(cells)
     }
 }
 
 private class ImageStub: FeedImageCellControllerDelegate {
-    let viewModel: FeedImageViewModel<UIImage>
+    let viewModel: FeedImageViewModel
+    let image: UIImage?
     weak var controller: FeedImageCellController?
 
     init(description: String?, location: String?, image: UIImage?) {
-        viewModel = FeedImageViewModel(
+        self.viewModel = FeedImageViewModel(
             description: description,
-            location: location,
-            image: image,
-            isLoading: false,
-            shouldRetry: image == nil)
+            location: location)
+        self.image = image
     }
-
+    
     func didRequestImage() {
-        controller?.display(viewModel)
-    }
-
-    func didCancelImageRequest() {}
-}
-
-extension UIViewController {
-    func snapshot() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: view.bounds)
-        return renderer.image { action in
-            view.layer.render(in: action.cgContext)
+        controller?.display(ResourceLoadingViewModel(isLoading: false))
+        
+        if let image = image {
+            controller?.display(image)
+            controller?.display(ResourceErrorViewModel(message: .none))
+        } else {
+            controller?.display(ResourceErrorViewModel(message: "any"))
         }
     }
+    
+    func didCancelImageRequest() {}
 }

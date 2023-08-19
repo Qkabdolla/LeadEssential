@@ -33,7 +33,12 @@ public final class FeedImageCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        
+        self.accessibilityIdentifier = "feed-image-cell"
+        feedImageView.accessibilityIdentifier = "feed-image-view"
+        
+        setupUI()
     }
     
     @objc private func retryButtonTapped() {
