@@ -8,10 +8,10 @@
       location = "container:EssentialApp/EssentialApp.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:EssentialApp/EssentialApp/EssentialApp.xctestplan">
+      location = "group:EssentialFeed/CI_macOS.xctestplan">
    </FileRef>
    <FileRef
-      location = "group:EssentialFeed/CI_macOS.xctestplan">
+      location = "group:EssentialApp/EssentialApp.xctestplan">
    </FileRef>
    <FileRef
       location = "group:EssentialFeediOS/CI_iOS.xctestplan">
