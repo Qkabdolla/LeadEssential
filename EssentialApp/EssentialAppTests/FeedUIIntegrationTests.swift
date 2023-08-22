@@ -365,6 +365,20 @@ class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(view0.renderedImage, .none, "Expected no image state change for reused view once image loading completes successfully")
     }
     
+    func test_loadMoreActions_requestMoreFromLoader() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading()
+
+        XCTAssertEqual(loader.loadMoreCallCount, 0, "Expected no requests before until load more action")
+
+        sut.simulateLoadMoreFeedAction()
+        XCTAssertEqual(loader.loadMoreCallCount, 1, "Expected load more request")
+        
+        sut.simulateLoadMoreFeedAction()
+        XCTAssertEqual(loader.loadMoreCallCount, 1, "Expected no request while loading more")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(selection: @escaping (FeedItem) -> Void = { _ in }, file: StaticString = #file, line: UInt = #line) -> (sut: ListViewController, loader: LoaderSpy) {
