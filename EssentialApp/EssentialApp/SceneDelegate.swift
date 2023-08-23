@@ -81,33 +81,39 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 // MARK: - RemoteFeedLoaderComposer
 extension SceneDelegate {
     private func makeRemoteFeedLoaderWithLocalFallback() -> AnyPublisher<Paginated<FeedItem>, Error> {
-        let url = FeedEndpoint.get().url(baseURL: baseURL)
+        makeRemoteFeedLoader()
+            .caching(to: localFeedLoader)
+            .fallback(to: localFeedLoader.loadPublisher)
+            .map(makeFirstPage)
+            .eraseToAnyPublisher()
+    }
+        
+    private func makeRemoteLoadMoreLoader(last: FeedItem?) -> AnyPublisher<Paginated<FeedItem>, Error> {
+        localFeedLoader.loadPublisher()
+            .zip(makeRemoteFeedLoader(after: last))
+            .map { (cachedItems, newItems) in
+                (cachedItems + newItems, newItems.last)
+            }.map(makePage)
+            .caching(to: localFeedLoader)
+    }
+    
+    private func makeRemoteFeedLoader(after: FeedItem? = nil) -> AnyPublisher<[FeedItem], Error> {
+        let url = FeedEndpoint.get(after: after).url(baseURL: baseURL)
         
         return httpClient
             .getPublisher(url: url)
             .tryMap(FeedItemsMapper.map)
-            .caching(to: localFeedLoader)
-            .fallback(to: localFeedLoader.loadPublisher)
-            .map { items in
-                Paginated(items: items, loadMorePublisher: self.makeRemoteLoadMoreLoader(items: items, last: items.last))
-            }
             .eraseToAnyPublisher()
     }
     
-    private func makeRemoteLoadMoreLoader(items: [FeedItem], last: FeedItem?) -> (() -> AnyPublisher<Paginated<FeedItem>, Error>)? {
-        last.map { lastItem in
-            let url = FeedEndpoint.get(after: lastItem).url(baseURL: baseURL)
-
-            return { [httpClient, localFeedLoader] in
-                httpClient
-                    .getPublisher(url: url)
-                    .tryMap(FeedItemsMapper.map)
-                    .map { newItems in
-                        let allItems = items + newItems
-                        return Paginated(items: allItems, loadMorePublisher: self.makeRemoteLoadMoreLoader(items: allItems, last: newItems.last))
-                    }.caching(to: localFeedLoader)
-            }
-        }
+    private func makeFirstPage(items: [FeedItem]) -> Paginated<FeedItem> {
+        makePage(items: items, last: items.last)
+    }
+    
+    private func makePage(items: [FeedItem], last: FeedItem?) -> Paginated<FeedItem> {
+        Paginated(items: items, loadMorePublisher: last.map { last in
+            { self.makeRemoteLoadMoreLoader(last: last) }
+        })
     }
 }
 
