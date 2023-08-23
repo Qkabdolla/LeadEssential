@@ -98,14 +98,14 @@ extension SceneDelegate {
         last.map { lastItem in
             let url = FeedEndpoint.get(after: lastItem).url(baseURL: baseURL)
 
-            return { [httpClient] in
+            return { [httpClient, localFeedLoader] in
                 httpClient
                     .getPublisher(url: url)
                     .tryMap(FeedItemsMapper.map)
                     .map { newItems in
                         let allItems = items + newItems
                         return Paginated(items: allItems, loadMorePublisher: self.makeRemoteLoadMoreLoader(items: allItems, last: newItems.last))
-                    }.eraseToAnyPublisher()
+                    }.caching(to: localFeedLoader)
             }
         }
     }
@@ -117,15 +117,13 @@ extension Publisher {
     }
 }
 
-extension Publisher where Output == [FeedItem] {
-    func caching(to cache: FeedCache) -> AnyPublisher<Output, Failure> {
-        handleEvents(receiveOutput: cache.saveIgnoringResult).eraseToAnyPublisher()
-    }
-}
-
 private extension FeedCache {
     func saveIgnoringResult(_ feed: [FeedItem]) {
         save(feed) { _ in }
+    }
+    
+    func saveIgnoringResult(_ page: Paginated<FeedItem>) {
+        saveIgnoringResult(page.items)
     }
 }
 
@@ -150,6 +148,16 @@ extension Publisher where Output == Data {
         handleEvents(receiveOutput: { data in
             cache.saveIgnoringResult(data, for: url)
         }).eraseToAnyPublisher()
+    }
+}
+
+extension Publisher {
+    func caching(to cache: FeedCache) -> AnyPublisher<Output, Failure> where Output == [FeedItem] {
+        handleEvents(receiveOutput: cache.saveIgnoringResult).eraseToAnyPublisher()
+    }
+
+    func caching(to cache: FeedCache) -> AnyPublisher<Output, Failure> where Output == Paginated<FeedItem> {
+        handleEvents(receiveOutput: cache.saveIgnoringResult).eraseToAnyPublisher()
     }
 }
 
