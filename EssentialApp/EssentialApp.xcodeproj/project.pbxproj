@@ -37,6 +37,7 @@
 		456EF1692A90F7500058D5C8 /* ListViewController+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456EF1682A90F7500058D5C8 /* ListViewController+Helpers.swift */; };
 		456EF1AB2A93893F0058D5C8 /* CommentsUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456EF1AA2A93893F0058D5C8 /* CommentsUIComposer.swift */; };
 		456EF1AD2A938C150058D5C8 /* CommentsUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456EF1AC2A938C150058D5C8 /* CommentsUIIntegrationTests.swift */; };
+		456EF1C12A98C2D00058D5C8 /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456EF1C02A98C2D00058D5C8 /* NullStore.swift */; };
 		BB06FA262A49DEA300746EEA /* CombineHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB06FA252A49DEA300746EEA /* CombineHelpers.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		456EF1682A90F7500058D5C8 /* ListViewController+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListViewController+Helpers.swift"; sourceTree = "<group>"; };
 		456EF1AA2A93893F0058D5C8 /* CommentsUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsUIComposer.swift; sourceTree = "<group>"; };
 		456EF1AC2A938C150058D5C8 /* CommentsUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsUIIntegrationTests.swift; sourceTree = "<group>"; };
+		456EF1C02A98C2D00058D5C8 /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 		BB06FA252A49DEA300746EEA /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,7 @@
 				BB06FA252A49DEA300746EEA /* CombineHelpers.swift */,
 				456EF15C2A90F22A0058D5C8 /* LoadResourcePresentationAdapter.swift */,
 				456EF1AA2A93893F0058D5C8 /* CommentsUIComposer.swift */,
+				456EF1C02A98C2D00058D5C8 /* NullStore.swift */,
 			);
 			path = EssentialApp;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				456EF1AB2A93893F0058D5C8 /* CommentsUIComposer.swift in Sources */,
 				452535212A3B438D00DB5044 /* FeedUIComposer.swift in Sources */,
 				452FCC152A33754700B2FA15 /* AppDelegate.swift in Sources */,
+				456EF1C12A98C2D00058D5C8 /* NullStore.swift in Sources */,
 				BB06FA262A49DEA300746EEA /* CombineHelpers.swift in Sources */,
 				452535182A39E2F700DB5044 /* DebuggingSceneDelegate.swift in Sources */,
 				456EF15D2A90F22A0058D5C8 /* LoadResourcePresentationAdapter.swift in Sources */,

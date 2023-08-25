@@ -46,8 +46,14 @@ class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(loader.loadFeedCallCount, 1, "Expected a loading request once view is loaded")
         
         sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadFeedCallCount, 1, "Expected no request until previous completes")
+
+        loader.completeFeedLoading(at: 0)
+        sut.simulateUserInitiatedReload()
         XCTAssertEqual(loader.loadFeedCallCount, 2, "Expected another loading request once user initiates a reload")
         
+        
+        loader.completeFeedLoading(at: 1)
         sut.simulateUserInitiatedReload()
         XCTAssertEqual(loader.loadFeedCallCount, 3, "Expected yet another loading request once user initiates another reload")
     }
@@ -468,6 +474,32 @@ class FeedUIIntegrationTests: XCTestCase {
         loader.completeLoadMoreWithError()
         sut.simulateTapOnLoadMoreFeedError()
         XCTAssertEqual(loader.loadMoreCallCount, 2)
+    }
+    
+    func test_feedImageView_doesNotLoadImageAgainUntilPreviousRequestCompletes() {
+        let image = makeImage(url: URL(string: "http://url-0.com")!)
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(with: [image])
+
+        sut.simulateFeedImageViewNearVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [image.imageURL], "Expected first request when near visible")
+
+        sut.simulateFeedImageViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [image.imageURL], "Expected no request until previous completes")
+
+        loader.completeImageLoading(at: 0)
+        sut.simulateFeedImageViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [image.imageURL, image.imageURL], "Expected second request when visible after previous complete")
+
+        sut.simulateFeedImageViewNotVisible(at: 0)
+        sut.simulateFeedImageViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [image.imageURL, image.imageURL, image.imageURL], "Expected third request when visible after canceling previous complete")
+
+        sut.simulateLoadMoreFeedAction()
+        loader.completeLoadMore(with: [image, makeImage()])
+        sut.simulateFeedImageViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [image.imageURL, image.imageURL, image.imageURL], "Expected no request until previous completes")
     }
     
     // MARK: - Helpers
